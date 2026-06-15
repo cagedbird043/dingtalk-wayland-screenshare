@@ -8,7 +8,7 @@
 *   **无 OpenCV 依赖**：去掉了原版 C++ 方案中庞大且容易因 ABI 升级崩盘的 OpenCV 依赖，包体积缩减到不到 300KB（原版及 OpenCV 依赖达数十兆）。
 *   **零运行时堆内存分配（Zero-Allocation）**：PipeWire 视频流的最新帧接收完全复用预分配的内存缓冲区，在 30 FPS 高频运行下不触发 `malloc`/`free`，彻底消除内存抖动和 CPU 垃圾回收开销。
 *   **锁粒度极致优化**：视频流获取与图像缩放逻辑与全局状态锁解耦，注入线程只锁定像素双缓冲区，绝不阻塞钉钉主线程，杜绝任何微小掉帧和卡顿。
-*   **无缝兼容平替**：编译产物可作为原 C++ 版 `libdingtalk_hook.so` 的直接替代品，无需修改任何已有的启动脚本。
+*   **无缝兼容平替**：编译产物可作为 [yatli/dingtalk-wayland-screencast](https://github.com/yatli/dingtalk-wayland-screencast) 原 C++ 版 `libdingtalk_hook.so` 的直接平替，无需修改已有的启动脚本。
 
 ## 🛠️ 工作原理
 
@@ -35,3 +35,12 @@ cargo build --release
 ```bash
 LD_PRELOAD=/path/to/libdingtalk_wayland_screenshare.so dingtalk
 ```
+
+## 💖 致谢与致敬
+
+本项目的创意想法和核心实现逻辑源自以下优秀的开源项目：
+
+*   [yatli/dingtalk-wayland-screencast](https://github.com/yatli/dingtalk-wayland-screencast) (原 C++ 版钉钉投屏 Hook 库)
+*   [xuwd1/wemeet-wayland-screenshare](https://github.com/xuwd1/wemeet-wayland-screenshare) (腾讯会议投屏 Hook，也是 yatli 版的灵感来源)
+
+感谢原作者们的创造性想法与探索，为 Linux 桌面社区在 Wayland 下共享屏幕提供了宝贵的思路！本项目采用纯 Rust 重写，旨在优化性能、缩减体积，并彻底消除 C++ 与 OpenCV 的运行时依赖。
