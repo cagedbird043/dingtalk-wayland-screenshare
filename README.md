@@ -18,7 +18,21 @@
 4.  **PipeWire 视频流接收**：通过 PipeWire 接收所选屏幕的实时帧，并协商 `BGRx` 等原生格式。
 5.  **异步像素注入**：启动 30 FPS 后台注入线程，在内存中执行高速双线性插值缩放与通道对换，直接 `memcpy` 写入钉钉的 `XImage` 共享内存空间，实现流畅投屏。
 
-## 📦 编译指南
+## 📦 安装指南 (Arch Linux)
+
+本项目已收录于 Arch 用户软件仓库 (AUR)，Arch Linux 用户可以直接通过 AUR 助手一键安装：
+
+```bash
+# 使用 yay 安装
+yay -S dingtalk-wayland-screenshare-rust-git
+
+# 或使用 paru 安装
+paru -S dingtalk-wayland-screenshare-rust-git
+```
+
+安装后会自动配置环境，让您的钉钉开箱即用支持 Wayland 屏幕共享。
+
+## 🛠️ 编译与手动安装
 
 确保您的系统已安装 `rust`、`cargo` 以及 `pipewire` 开发库：
 
