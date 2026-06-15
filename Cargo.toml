@@ -1,0 +1,25 @@
+[package]
+name = "dingtalk-wayland-screenshare"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+libc = "0.2"
+x11 = "2.21"
+zbus = "4.4"
+pipewire = "0.10"
+resize = "0.8"
+rgb = "0.8"
+parking_lot = "0.12"
+
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+strip = true
+opt-level = "z"

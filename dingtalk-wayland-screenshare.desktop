@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Chat;Network;
+Comment=DingTalk with Wayland Screen Share
+Exec=dingtalk-wayland-screenshare %u
+GenericName=dingtalk
+Icon=dingtalk
+Keywords=dingtalk;
+MimeType=x-scheme-handler/dingtalk;
+Name=DingTalk (Wayland Screen Share)
+Name[zh_CN]=钉钉 (Wayland 屏幕共享)
+Type=Application
